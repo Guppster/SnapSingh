@@ -6,12 +6,12 @@
     <string name="title_section2">Friends</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Login</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="loginButton_hint">Login</string>
     <string name="signUpButton_hint">Sign Up!</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sign_up">SignUp</string>
     <string name="emailField_hint">Email</string>
     <string name="SignUpErrorMessage">Please fill in all fields!</string>
     <string name="SignUpErrorTitle">Oops!</string>
@@ -20,5 +20,7 @@
     <string name="logoutTitle">Logout</string>
     <string name="emptyInboxLabel">No new messages!</string>
     <string name="emptyFriendsLabel">Add friends to begin!</string>
+    <string name="editFriendsLabel">Add friends to begin!</string>
+    <string name="title_activity_edit_friends">Edit Friends</string>
 
 </resources>
