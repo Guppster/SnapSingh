@@ -24,4 +24,12 @@
     <string name="title_activity_edit_friends">Edit Friends</string>
     <string name="ErrorTitle">Oopsy Daisy!</string>
     <string name="MenuCamera">Camera</string>
+
+    <string-array name="camera_choices">
+        <item >Take Picture</item>
+        <item >Take Video</item>
+        <item >Choose Picture</item>
+        <item >Choose Video</item>
+    </string-array>
+
 </resources>
