@@ -23,5 +23,5 @@
     <string name="editFriendsLabel">Edit friends</string>
     <string name="title_activity_edit_friends">Edit Friends</string>
     <string name="ErrorTitle">Oopsy Daisy!</string>
-
+    <string name="MenuCamera">Camera</string>
 </resources>
