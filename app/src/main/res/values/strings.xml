@@ -19,5 +19,6 @@
     <string name="LoginErrorMessage">Please fill in all fields!</string>
     <string name="logoutTitle">Logout</string>
     <string name="emptyInboxLabel">No new messages!</string>
+    <string name="emptyFriendsLabel">Add friends to begin!</string>
 
 </resources>
