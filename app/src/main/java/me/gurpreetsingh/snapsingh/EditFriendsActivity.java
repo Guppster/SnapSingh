@@ -1,23 +1,33 @@
 package me.gurpreetsingh.snapsingh;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.ArrayAdapter;
 
 import com.parse.FindCallback;
-import com.parse.ParseObject;
+import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.List;
 
 
-public class EditFriendsActivity extends Activity {
+public class EditFriendsActivity extends ListActivity
+{
+    public static final String TAG = EditFriendsActivity.class.getSimpleName();
+
+    protected List<ParseUser> mUsers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_edit_friends);
     }
 
@@ -26,10 +36,48 @@ public class EditFriendsActivity extends Activity {
     {
         super.onResume();
 
+        setProgressBarIndeterminateVisibility(true);
+
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.orderByAscending(ParseConstants.KEY_USERNAME);
 
         query.setLimit(1000);
+
+        query.findInBackground(new FindCallback<ParseUser>()
+        {
+            @Override
+            public void done(List<ParseUser> parseUsers, ParseException e)
+            {
+                setProgressBarIndeterminateVisibility(false);
+
+                if(e == null) //Success
+                {
+                    mUsers = parseUsers;
+                    String[] usernames = new String[mUsers.size()];
+
+                    int i = 0;
+
+                    for(ParseUser user: mUsers)
+                    {
+                        usernames[i] = user.getUsername();
+                        i++;
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(EditFriendsActivity.this, android.R.layout.simple_list_item_checked, usernames);
+                    setListAdapter(adapter);
+                }
+                else //There was an error
+                {
+                    Log.e(TAG, e.getMessage());
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditFriendsActivity.this);
+                    builder.setMessage(e.getMessage())
+                            .setTitle(R.string.ErrorTitle)
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
     }
 
     @Override

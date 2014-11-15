@@ -14,13 +14,14 @@
     <string name="title_activity_sign_up">SignUp</string>
     <string name="emailField_hint">Email</string>
     <string name="SignUpErrorMessage">Please fill in all fields!</string>
-    <string name="SignUpErrorTitle">Oops!</string>
-    <string name="LoginErrorTitle">Oops!</string>
+    <string name="SignUpErrorTitle">Oopsy Daisy!</string>
+    <string name="LoginErrorTitle">Oopsy Daisy!</string>
     <string name="LoginErrorMessage">Please fill in all fields!</string>
     <string name="logoutTitle">Logout</string>
     <string name="emptyInboxLabel">No new messages!</string>
     <string name="emptyFriendsLabel">Add friends to begin!</string>
-    <string name="editFriendsLabel">Add friends to begin!</string>
+    <string name="editFriendsLabel">Edit friends</string>
     <string name="title_activity_edit_friends">Edit Friends</string>
+    <string name="ErrorTitle">Oopsy Daisy!</string>
 
 </resources>
