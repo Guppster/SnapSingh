@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,6 +27,7 @@ public class SignUpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
 
         mUsername = (EditText)findViewById(R.id.usernameField);
@@ -53,16 +55,21 @@ public class SignUpActivity extends Activity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
-                else
+                else //If the input is valid create a new user
                 {
-                    //If the input is valid create a new user
+                    //Start the progress animation
+                    setProgressBarIndeterminateVisibility(true);
+
                     ParseUser newUser = new ParseUser();
                     newUser.setUsername(username);
                     newUser.setPassword(password);
                     newUser.setEmail(email);
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
-                        public void done(ParseException e) {
+                        public void done(ParseException e)
+                        {
+                            //End the progress animation
+                            setProgressBarIndeterminateVisibility(false);
                             if(e == null)
                             {
                                 //Success
@@ -85,10 +92,7 @@ public class SignUpActivity extends Activity {
                 }
             }
         });
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

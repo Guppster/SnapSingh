@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class LoginActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_login);
 
         mSignupTextView = (TextView)findViewById(R. id.signUpButton);
@@ -61,17 +63,22 @@ public class LoginActivity extends Activity
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
-                else
+                else//If the input is valid, login the user
                 {
-                    //If the input is valid, login the user
+                    //Start the progress animation
+                    setProgressBarIndeterminateVisibility(true);
+
                     ParseUser.logInInBackground(username, password, new LogInCallback() {
                         @Override
                         public void done(ParseUser user, ParseException e) {
+
+                            //End the progress animation
+                            setProgressBarIndeterminateVisibility(false);
                             if (e == null) {
                                 // Hooray! The user is logged in.
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             } else {
                                 // Signup failed. Look at the ParseException to see what happened.
