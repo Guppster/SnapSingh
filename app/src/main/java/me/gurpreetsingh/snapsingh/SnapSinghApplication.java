@@ -15,9 +15,5 @@ public class SnapSinghApplication extends Application
     {
         super.onCreate();
         Parse.initialize(this, "WRFWXyfaLViNErFpnQxA5BoKXiG6vtvB0leyv7pX", "P3vUl9yu71rRCybSka1VQKB24036DrVwiWA0OKXJ");
-
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
     }
 }

@@ -22,6 +22,7 @@ public class LoginActivity extends Activity
         mSignupTextView = (TextView)findViewById(R. id.signUpButton);
         mSignupTextView.setOnClickListener(new View.OnClickListener()
         {
+            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);

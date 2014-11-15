@@ -14,5 +14,7 @@
     <string name="signUpButton_hint">Sign Up!</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="emailField_hint">Email</string>
+    <string name="SignUpErrorMessage">Please fill in all fields!</string>
+    <string name="SignUpErrorTitle">Oops!</string>
 
 </resources>
