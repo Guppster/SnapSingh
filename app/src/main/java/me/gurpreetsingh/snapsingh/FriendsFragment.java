@@ -51,7 +51,7 @@ public class FriendsFragment extends ListFragment
             @Override
             public void done(List<ParseUser> parseUsers, ParseException e) {
                 getActivity().setProgressBarIndeterminateVisibility(false);
-                
+
                 if(e == null)
                 {
                     mFriends = parseUsers;

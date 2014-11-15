@@ -94,13 +94,6 @@ public class EditFriendsActivity extends ListActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_edit_friends, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -122,22 +115,25 @@ public class EditFriendsActivity extends ListActivity
 
         if(getListView().isItemChecked(position))
         {
-            //Add friend, because when this method is called the item is checked
+            //Add friend to frontend, because when this method is called the item is checked
             mFriendsRelation.add(mUsers.get(position));
-            mCurrentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if(e != null)
-                    {
-                        Log.e(TAG, e.getMessage());
-                    }
-                }
-            });
         }
         else
         {
-            //remove friend, because the method call unchecked the item earlier
+            //remove friend from frontend, because the method call unchecked the item earlier
+            mFriendsRelation.remove(mUsers.get(position));
         }
+
+        //Save the relation from the backend
+        mCurrentUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e != null)
+                {
+                    Log.e(TAG, e.getMessage());
+                }
+            }
+        });
     }
 
     private void addFriendCheckmarks()
