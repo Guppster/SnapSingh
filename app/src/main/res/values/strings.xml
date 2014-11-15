@@ -18,5 +18,6 @@
     <string name="SignUpErrorTitle">Oops!</string>
     <string name="LoginErrorTitle">Oops!</string>
     <string name="LoginErrorMessage">Please fill in all fields!</string>
+    <string name="logoutTitle">Logout</string>
 
 </resources>

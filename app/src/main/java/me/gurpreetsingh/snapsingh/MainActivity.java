@@ -56,10 +56,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         //If there is no one logged in, go to the login screen first
         if (currentUser == null)
         {
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            RedirectToLogin();
         }
         else //Otherwise proceed and log data
         {
@@ -101,6 +98,13 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         }
     }
 
+    private void RedirectToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,8 +121,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout)
+        {
+            ParseUser.logOut();
+            RedirectToLogin();
         }
 
         return super.onOptionsItemSelected(item);
